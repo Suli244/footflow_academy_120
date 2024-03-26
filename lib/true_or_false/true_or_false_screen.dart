@@ -6,8 +6,49 @@ import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/true_or_false/widget/gl_cont_wideg.dart';
 
-class TrueOrFalseScreen extends StatelessWidget {
+class TrueOrFalseScreen extends StatefulWidget {
   const TrueOrFalseScreen({super.key});
+
+  @override
+  State<TrueOrFalseScreen> createState() => _TrueOrFalseScreenState();
+}
+
+class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
+  int currentIndex = 0;
+  bool? isAnswerCorrect;
+  PageController _pageController = PageController();
+
+  @override
+  void initState() {
+    super.initState();
+    listTrFaModel.shuffle();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  void _handleAnswer(bool answer) {
+    final currentModel = listTrFaModel[currentIndex];
+    setState(() {
+      isAnswerCorrect = currentModel.correctAnswer == answer;
+    });
+
+    if (currentIndex < listTrFaModel.length - 1) {
+      Future.delayed(const Duration(seconds: 2), () {
+        _pageController.nextPage(
+            duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
+      });
+    } else {
+      Future.delayed(const Duration(seconds: 2), () {
+        _pageController.jumpToPage(0);
+        listTrFaModel.shuffle();
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +73,15 @@ class TrueOrFalseScreen extends StatelessWidget {
               height: 550,
               width: MediaQuery.of(context).size.width,
               child: PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageController,
                 itemCount: listTrFaModel.length,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndex = index;
+                    isAnswerCorrect = null;
+                  });
+                },
                 itemBuilder: (context, index) {
                   return Container(
                     padding: EdgeInsets.only(
@@ -61,30 +110,53 @@ class TrueOrFalseScreen extends StatelessWidget {
                           ),
                         ),
                         const Spacer(),
-                        Container(
-                          margin: EdgeInsets.only(bottom: 20.r),
-                          padding: EdgeInsets.all(12.r),
-                          decoration: BoxDecoration(
-                            color: FaColors.blue14A0FF,
-                            borderRadius: BorderRadius.circular(12.r),
-                          ),
-                          child: Center(
-                            child: Text(
-                              'The answer is correct',
-                              style: TextStyle(
-                                fontSize: 16.h,
-                                fontWeight: FontWeight.w600,
-                                color: FaColors.whate,
-                              ),
-                            ),
-                          ),
-                        ),
+                        isAnswerCorrect != null
+                            ? isAnswerCorrect == true
+                                ? Container(
+                                    margin: EdgeInsets.only(bottom: 20.r),
+                                    padding: EdgeInsets.all(12.r),
+                                    decoration: BoxDecoration(
+                                      color: FaColors.green,
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'The answer is correct',
+                                        style: TextStyle(
+                                          fontSize: 16.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: FaColors.whate,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : Container(
+                                    margin: EdgeInsets.only(bottom: 20.r),
+                                    padding: EdgeInsets.all(12.r),
+                                    decoration: BoxDecoration(
+                                      color: FaColors.red,
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'The answer is incorrect',
+                                        style: TextStyle(
+                                          fontSize: 16.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: FaColors.whate,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                            : const SizedBox(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: FaMotion(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _handleAnswer(true);
+                                },
                                 child: Container(
                                   padding: EdgeInsets.all(12.r),
                                   decoration: BoxDecoration(
@@ -113,7 +185,9 @@ class TrueOrFalseScreen extends StatelessWidget {
                             SizedBox(width: 23.w),
                             Expanded(
                               child: FaMotion(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _handleAnswer(false);
+                                },
                                 child: Container(
                                   padding: EdgeInsets.all(12.r),
                                   decoration: BoxDecoration(
