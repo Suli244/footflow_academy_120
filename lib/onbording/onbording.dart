@@ -7,19 +7,18 @@ import 'package:footflow_academy_120/core/web_view.dart';
 import 'package:footflow_academy_120/onbording/widget/onboarding_item_widget.dart';
 import 'package:footflow_academy_120/premium/pre_scre.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/onbording/widget/rest_wid.dart';
 
-class Onbording extends StatefulWidget {
-  const Onbording({super.key});
+class FaOnbording extends StatefulWidget {
+  const FaOnbording({super.key});
 
   @override
-  State<Onbording> createState() => _OnbordingState();
+  State<FaOnbording> createState() => _FaOnbordingState();
 }
 
-class _OnbordingState extends State<Onbording> {
+class _FaOnbordingState extends State<FaOnbording> {
   final PageController controller = PageController();
   int currantPage = 0;
 

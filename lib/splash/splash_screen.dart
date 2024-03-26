@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:footflow_academy_120/core/con_bar.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/onbording/onbording.dart';
-import 'package:footflow_academy_120/onbording/widget/onboarding_item_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -44,7 +42,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => const FaBottomBar(),
+        builder: (context) => const FaOnbording(),
       ),
     );
   }
