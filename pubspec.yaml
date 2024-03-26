@@ -39,6 +39,7 @@ dependencies:
   webview_flutter: ^4.4.2
   flutter_svg: ^2.0.9
   smooth_page_indicator: ^1.1.0
+  share_plus: ^8.0.2
 
 dev_dependencies:
   flutter_test:
