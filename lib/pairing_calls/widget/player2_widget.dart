@@ -16,6 +16,8 @@ class Player2Container extends StatefulWidget {
 
 class _Player2ContainerState extends State<Player2Container> {
   String playerName = '';
+  int indexColor = 0;
+  Color colorPlayer2 = FaColors.blue003870;
   @override
   void initState() {
     getPlayers();
@@ -24,8 +26,10 @@ class _Player2ContainerState extends State<Player2Container> {
 
   Future<void> getPlayers() async {
     String pl = await getPlayer2();
+    int plcolor = await getPlayer2Color();
     setState(() {
       playerName = pl;
+      colorPlayer2 = Color(plcolor);
     });
   }
 
@@ -36,7 +40,7 @@ class _Player2ContainerState extends State<Player2Container> {
       width: MediaQuery.of(context).size.width,
       height: 150.h,
       decoration: BoxDecoration(
-        color: FaColors.purple,
+        color: colorPlayer2,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -50,116 +54,168 @@ class _Player2ContainerState extends State<Player2Container> {
                 builder: (BuildContext context) {
                   TextEditingController controllerText =
                       TextEditingController();
-                  return CupertinoAlertDialog(
-                    title: const Text('Player 1'),
-                    content: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text('Write the name'),
-                        const SizedBox(height: 8),
-                        CupertinoTextField(
-                          controller: controllerText,
-                          placeholder: 'Enter',
-                          padding: const EdgeInsets.all(10.0),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: const Color(0xFFEEEAEA),
-                          ),
-                        ),
-                        const SizedBox(height: 12),
-                        const Text('Select color'),
-                        const SizedBox(height: 8),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  return StatefulBuilder(
+                    builder: (
+                      BuildContext context,
+                      StateSetter setState,
+                    ) {
+                      // write -> setState(() {});
+                      return CupertinoAlertDialog(
+                        title: const Text('Player 1'),
+                        content: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            FaMotion(
-                              child: CircleAvatar(
-                                radius: 16,
-                                backgroundColor: FaColors.grey999999,
-                                child: CircleAvatar(
-                                  radius: 14,
-                                  backgroundColor: FaColors.purple,
-                                ),
+                            const Text('Write the name'),
+                            const SizedBox(height: 8),
+                            CupertinoTextField(
+                              controller: controllerText,
+                              placeholder: 'Enter',
+                              padding: const EdgeInsets.all(10.0),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: const Color(0xFFEEEAEA),
                               ),
                             ),
-                            FaMotion(
-                              child: CircleAvatar(
-                                radius: 16,
-                                backgroundColor: FaColors.grey999999,
-                                child: CircleAvatar(
-                                  radius: 14,
-                                  backgroundColor: FaColors.blue003870,
+                            const SizedBox(height: 12),
+                            const Text('Select color'),
+                            const SizedBox(height: 8),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                FaMotion(
+                                  onPressed: () {
+                                    setState(() {
+                                      indexColor = FaColors.purple.value;
+                                    });
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 16,
+                                    backgroundColor:
+                                        indexColor == FaColors.purple.value
+                                            ? FaColors.grey999999
+                                            : Colors.transparent,
+                                    child: const CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: FaColors.purple,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            FaMotion(
-                              child: CircleAvatar(
-                                radius: 16,
-                                backgroundColor: FaColors.grey999999,
-                                child: CircleAvatar(
-                                  radius: 14,
-                                  backgroundColor: FaColors.red,
+                                FaMotion(
+                                  onPressed: () {
+                                    setState(() {
+                                      indexColor = FaColors.blue003870.value;
+                                    });
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 16,
+                                    backgroundColor:
+                                        indexColor == FaColors.blue003870.value
+                                            ? FaColors.grey999999
+                                            : Colors.transparent,
+                                    child: const CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: FaColors.blue003870,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            FaMotion(
-                              child: CircleAvatar(
-                                radius: 16,
-                                backgroundColor: FaColors.grey999999,
-                                child: CircleAvatar(
-                                  radius: 14,
-                                  backgroundColor: FaColors.green,
+                                FaMotion(
+                                  onPressed: () {
+                                    setState(() {
+                                      indexColor = FaColors.red.value;
+                                    });
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 16,
+                                    backgroundColor:
+                                        indexColor == FaColors.red.value
+                                            ? FaColors.grey999999
+                                            : Colors.transparent,
+                                    child: const CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: FaColors.red,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                            FaMotion(
-                              child: CircleAvatar(
-                                radius: 16,
-                                backgroundColor: FaColors.grey999999,
-                                child: CircleAvatar(
-                                  radius: 14,
-                                  backgroundColor: FaColors.yellow,
+                                FaMotion(
+                                  onPressed: () {
+                                    setState(() {
+                                      indexColor = FaColors.green.value;
+                                    });
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 16,
+                                    backgroundColor:
+                                        indexColor == FaColors.green.value
+                                            ? FaColors.grey999999
+                                            : Colors.transparent,
+                                    child: const CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: FaColors.green,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                FaMotion(
+                                  onPressed: () {
+                                    setState(() {
+                                      indexColor = FaColors.yellow.value;
+                                    });
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 16,
+                                    backgroundColor:
+                                        indexColor == FaColors.yellow.value
+                                            ? FaColors.grey999999
+                                            : Colors.transparent,
+                                    child: const CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: FaColors.yellow,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
-                    actions: [
-                      CupertinoDialogAction(
-                        child: const Text(
-                          'Exit',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                        actions: [
+                          CupertinoDialogAction(
+                            child: const Text(
+                              'Exit',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.black,
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
                           ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                      ),
-                      CupertinoDialogAction(
-                        child: const Text(
-                          'Save',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: FaColors.blue14A0FF,
+                          CupertinoDialogAction(
+                            child: const Text(
+                              'Save',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                                color: FaColors.blue14A0FF,
+                              ),
+                            ),
+                            onPressed: () async {
+                              if (controllerText.text.isNotEmpty &&
+                                  indexColor != 0) {
+                                Navigator.of(context).pop();
+                                await setPlayer2(controllerText.text);
+                                await setPlayer2Color(indexColor);
+                              }
+                            },
                           ),
-                        ),
-                        onPressed: () async {
-                          if (controllerText.text.isNotEmpty) {
-                            Navigator.of(context).pop();
-                            await setPlayer2(controllerText.text);
-                          }
-                        },
-                      ),
-                    ],
+                        ],
+                      );
+                    },
                   );
                 },
               );
+              setState(() {});
+              getPlayers();
             },
             child: Image.asset(
               'assets/icons/edit.png',

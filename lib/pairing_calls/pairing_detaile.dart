@@ -28,6 +28,8 @@ class _PairingDetaileState extends State<PairingDetaile> {
   Timer timerStart = Timer(Duration.zero, () {});
   String player1 = '';
   String player2 = '';
+  Color colorPlayer1 = FaColors.blue003870;
+  Color colorPlayer2 = FaColors.blue003870;
   List<PrModel> listPairing = listPr;
 
   @override
@@ -47,9 +49,13 @@ class _PairingDetaileState extends State<PairingDetaile> {
   Future<void> getPlayers() async {
     String play1 = await getPlayer1();
     String play2 = await getPlayer2();
+    int plcolor1 = await getPlayer1Color();
+    int plcolor2 = await getPlayer2Color();
     setState(() {
       player1 = play1;
       player2 = play2;
+      colorPlayer1 = Color(plcolor1);
+      colorPlayer2 = Color(plcolor2);
     });
   }
 
@@ -97,9 +103,9 @@ class _PairingDetaileState extends State<PairingDetaile> {
             ),
           )
         : Scaffold(
-            backgroundColor: changePlayer ? FaColors.red : FaColors.green,
+            backgroundColor: changePlayer ? colorPlayer1 : colorPlayer2,
             appBar: AppBar(
-              backgroundColor: changePlayer ? FaColors.red : FaColors.green,
+              backgroundColor: changePlayer ? colorPlayer1 : colorPlayer2,
               scrolledUnderElevation: 0,
               leading: const BackButton(
                 color: Colors.white,

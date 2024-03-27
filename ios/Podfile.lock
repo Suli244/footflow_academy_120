@@ -1,4 +1,8 @@
 PODS:
+  - apphud (2.4.4):
+    - ApphudSDK (= 3.2.8)
+    - Flutter
+  - ApphudSDK (3.2.8)
   - Flutter (1.0.0)
   - flutter_inappwebview_ios (0.0.1):
     - Flutter
@@ -23,6 +27,7 @@ PODS:
     - Flutter
 
 DEPENDENCIES:
+  - apphud (from `.symlinks/plugins/apphud/ios`)
   - Flutter (from `Flutter`)
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
@@ -33,9 +38,12 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ApphudSDK
     - OrderedSet
 
 EXTERNAL SOURCES:
+  apphud:
+    :path: ".symlinks/plugins/apphud/ios"
   Flutter:
     :path: Flutter
   flutter_inappwebview_ios:
@@ -52,6 +60,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/webview_flutter_wkwebview/ios"
 
 SPEC CHECKSUMS:
+  apphud: 1f6177886a68aae8a3e7b3ccff345c782cf36896
+  ApphudSDK: c1eb87b784a604cff0461112b594cd68a91fc7f6
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
@@ -61,6 +71,6 @@ SPEC CHECKSUMS:
   sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
   webview_flutter_wkwebview: be0f0d33777f1bfd0c9fdcb594786704dbf65f36
 
-PODFILE CHECKSUM: 819463e6a0290f5a72f145ba7cde16e8b6ef0796
+PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.12.0

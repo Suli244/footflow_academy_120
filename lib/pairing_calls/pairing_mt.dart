@@ -1,3 +1,4 @@
+import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PrModel {
@@ -12,7 +13,7 @@ class PrModel {
 
 Future<int> getPlayer1Color() async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.getInt('Player1Color') ?? 0;
+  return prefs.getInt('Player1Color') ?? FaColors.blue003870.value;
 }
 
 Future<void> setPlayer1Color(int playerColor1) async {
@@ -22,7 +23,7 @@ Future<void> setPlayer1Color(int playerColor1) async {
 
 Future<int> getPlayer2Color() async {
   final prefs = await SharedPreferences.getInstance();
-  return prefs.getInt('Player2Color') ?? 0;
+  return prefs.getInt('Player2Color') ?? FaColors.purple.value;
 }
 
 Future<void> setPlayer2Color(int playerColor2) async {
