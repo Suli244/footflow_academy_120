@@ -44,7 +44,8 @@ dependencies:
   cached_network_image: ^3.3.1
   youtube_player_flutter: ^9.0.0
   shared_preferences: ^2.2.2
-
+  apphud: ^2.2.3
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

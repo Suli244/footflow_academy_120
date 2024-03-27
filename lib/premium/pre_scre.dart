@@ -1,3 +1,5 @@
+import 'package:apphud/apphud.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/con_bar.dart';
@@ -6,6 +8,7 @@ import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/core/urls.dart';
 import 'package:footflow_academy_120/core/web_view.dart';
 import 'package:footflow_academy_120/onbording/widget/rest_wid.dart';
+import 'package:footflow_academy_120/settings/footflow_academy_predm.dart';
 
 class PremiumScreen extends StatefulWidget {
   const PremiumScreen({super.key, this.isClose = false});
@@ -15,6 +18,7 @@ class PremiumScreen extends StatefulWidget {
 }
 
 class _PremiumScreenState extends State<PremiumScreen> {
+  bool vssqwwd = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,16 +126,32 @@ class _PremiumScreenState extends State<PremiumScreen> {
                 ),
                 SizedBox(height: 60.h),
                 FaMotion(
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const FaBottomBar(
-                          indexScr: 0,
-                        ),
-                      ),
-                      (protected) => false,
+                  onPressed: () async {
+                    setState(() {
+                      vssqwwd = true;
+                    });
+                    final apphudPaywalls = await Apphud.paywalls();
+                    print(apphudPaywalls?.paywalls.first.products?.first);
+                    await Apphud.purchase(
+                      product: apphudPaywalls?.paywalls.first.products?.first,
+                    ).whenComplete(
+                      () async {
+                        if (await Apphud.hasPremiumAccess() ||
+                            await Apphud.hasActiveSubscription()) {
+                          await setFootflowAcademyPrenmdvdsdsd();
+                          Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const FaBottomBar(),
+                            ),
+                            (route) => false,
+                          );
+                        }
+                      },
                     );
+                    setState(() {
+                      vssqwwd = false;
+                    });
                   },
                   child: Container(
                     height: 52.h,
@@ -141,15 +161,18 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       color: FaColors.blue14A0FF,
                     ),
                     child: Center(
-                      child: Text(
-                        'Buy Premium for \$0,99',
-                        style: TextStyle(
-                          fontSize: 18.h,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                          height: 0,
-                        ),
-                      ),
+                      child: vssqwwd
+                          ? const CupertinoActivityIndicator(
+                              color: Colors.white)
+                          : Text(
+                              'Buy Premium for \$0,99',
+                              style: TextStyle(
+                                fontSize: 18.h,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
+                                height: 0,
+                              ),
+                            ),
                     ),
                   ),
                 ),
