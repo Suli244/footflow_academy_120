@@ -18,6 +18,7 @@ class DetailTraining extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         leading: Padding(
           padding: EdgeInsets.only(left: 20.w),
           child: FaMotion(
