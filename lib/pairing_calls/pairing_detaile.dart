@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,6 +28,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
   Timer timerStart = Timer(Duration.zero, () {});
   String player1 = '';
   String player2 = '';
+  List<PrModel> listPairing = listPr;
 
   @override
   void dispose() {
@@ -79,6 +81,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
 
   @override
   Widget build(BuildContext context) {
+    listPairing.shuffle(Random(10));
     return isChekStart == false
         ? Scaffold(
             backgroundColor: FaColors.blue003870,
@@ -130,7 +133,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Image.asset(
-                                  listPr[index].image,
+                                  listPairing[index].image,
                                 ),
                                 SizedBox(height: 24.r),
                                 Container(
@@ -141,7 +144,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
                                     borderRadius: BorderRadius.circular(12),
                                   ),
                                   child: Text(
-                                    listPr[index].text,
+                                    listPairing[index].text,
                                     style: TextStyle(
                                       fontSize: 16.h,
                                       fontWeight: FontWeight.w500,
