@@ -1,11 +1,8 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/training/model/training_model.dart';
-import 'package:footflow_academy_120/training/widget/youtube_player_widget_dateil.dart';
 
 class TrainingItemWidget extends StatelessWidget {
   const TrainingItemWidget({
@@ -29,14 +26,17 @@ class TrainingItemWidget extends StatelessWidget {
       ),
       child: Stack(
         children: [
-          YoutubePlayeR(
-            url: model.url,
-          ),
           Container(
             width: double.infinity,
             height: 190.h,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r),
+              image: DecorationImage(
+                fit: BoxFit.fill,
+                image: AssetImage(
+                  model.image,
+                ),
+              ),
             ),
           ),
           Row(
