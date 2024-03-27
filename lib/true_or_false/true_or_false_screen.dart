@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:footflow_academy_120/core/fa_colors.dart';
@@ -53,6 +54,7 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Text(
           'True or false',
           style: TextStyle(
@@ -62,168 +64,166 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.r),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 16.h),
-              const GlContWid(),
-              SizedBox(height: 16.h),
-              SizedBox(
-                height: 500.h,
-                width: MediaQuery.of(context).size.width,
-                child: PageView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  controller: _pageController,
-                  itemCount: listTrFaModel.length,
-                  onPageChanged: (index) {
-                    setState(() {
-                      currentIndex = index;
-                      isAnswerCorrect = null;
-                    });
-                  },
-                  itemBuilder: (context, index) {
-                    return Container(
-                      padding: EdgeInsets.only(
-                          top: 16.r, left: 16.r, right: 16.r, bottom: 24.r),
-                      decoration: BoxDecoration(
-                          color: FaColors.grey999999,
-                          borderRadius: BorderRadius.circular(12.r),
-                          image: DecorationImage(
-                              image: AssetImage(listTrFaModel[index].image),
-                              fit: BoxFit.fill)),
-                      child: Column(
-                        children: [
-                          Container(
-                            padding: EdgeInsets.all(12.r),
-                            decoration: BoxDecoration(
-                              color: FaColors.blue003870.withOpacity(0.6),
-                              borderRadius: BorderRadius.circular(8.r),
-                            ),
-                            child: Text(
-                              listTrFaModel[index].question,
-                              style: TextStyle(
-                                fontSize: 14.h,
-                                fontWeight: FontWeight.w500,
-                                color: FaColors.whate,
-                              ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 16.h),
+            const GlContWid(),
+            SizedBox(height: 16.h),
+            Container(
+              height: 500.h,
+              margin: EdgeInsets.symmetric(horizontal: 24.r),
+              width: MediaQuery.of(context).size.width,
+              child: PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageController,
+                itemCount: listTrFaModel.length,
+                onPageChanged: (index) {
+                  setState(() {
+                    currentIndex = index;
+                    isAnswerCorrect = null;
+                  });
+                },
+                itemBuilder: (context, index) {
+                  return Container(
+                    padding: EdgeInsets.only(
+                        top: 16.r, left: 16.r, right: 16.r, bottom: 24.r),
+                    decoration: BoxDecoration(
+                        color: FaColors.grey999999,
+                        borderRadius: BorderRadius.circular(12.r),
+                        image: DecorationImage(
+                            image: AssetImage(listTrFaModel[index].image),
+                            fit: BoxFit.fill)),
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(12.r),
+                          decoration: BoxDecoration(
+                            color: FaColors.blue003870.withOpacity(0.6),
+                            borderRadius: BorderRadius.circular(8.r),
+                          ),
+                          child: Text(
+                            listTrFaModel[index].question,
+                            style: TextStyle(
+                              fontSize: 14.h,
+                              fontWeight: FontWeight.w500,
+                              color: FaColors.whate,
                             ),
                           ),
-                          const Spacer(),
-                          isAnswerCorrect != null
-                              ? isAnswerCorrect == true
-                                  ? Container(
-                                      margin: EdgeInsets.only(bottom: 20.r),
-                                      padding: EdgeInsets.all(12.r),
-                                      decoration: BoxDecoration(
-                                        color: FaColors.green,
-                                        borderRadius: BorderRadius.circular(12.r),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'The answer is correct',
-                                          style: TextStyle(
-                                            fontSize: 16.h,
-                                            fontWeight: FontWeight.w600,
-                                            color: FaColors.whate,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                  : Container(
-                                      margin: EdgeInsets.only(bottom: 20.r),
-                                      padding: EdgeInsets.all(12.r),
-                                      decoration: BoxDecoration(
-                                        color: FaColors.red,
-                                        borderRadius: BorderRadius.circular(12.r),
-                                      ),
-                                      child: Center(
-                                        child: Text(
-                                          'The answer is incorrect',
-                                          style: TextStyle(
-                                            fontSize: 16.h,
-                                            fontWeight: FontWeight.w600,
-                                            color: FaColors.whate,
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                              : const SizedBox(),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: FaMotion(
-                                  onPressed: () {
-                                    _handleAnswer(true);
-                                  },
-                                  child: Container(
+                        ),
+                        const Spacer(),
+                        isAnswerCorrect != null
+                            ? isAnswerCorrect == true
+                                ? Container(
+                                    margin: EdgeInsets.only(bottom: 20.r),
                                     padding: EdgeInsets.all(12.r),
                                     decoration: BoxDecoration(
-                                      color: FaColors.blue14A0FF,
+                                      color: FaColors.green,
                                       borderRadius: BorderRadius.circular(12.r),
                                     ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'True',
-                                          style: TextStyle(
-                                            fontSize: 24.h,
-                                            fontWeight: FontWeight.w600,
-                                            color: FaColors.whate,
-                                          ),
+                                    child: Center(
+                                      child: Text(
+                                        'The answer is correct',
+                                        style: TextStyle(
+                                          fontSize: 16.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: FaColors.whate,
                                         ),
-                                        SizedBox(width: 19.w),
-                                        Image.asset('assets/images/true.png',
-                                            width: 24.w)
-                                      ],
+                                      ),
                                     ),
+                                  )
+                                : Container(
+                                    margin: EdgeInsets.only(bottom: 20.r),
+                                    padding: EdgeInsets.all(12.r),
+                                    decoration: BoxDecoration(
+                                      color: FaColors.red,
+                                      borderRadius: BorderRadius.circular(12.r),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'The answer is incorrect',
+                                        style: TextStyle(
+                                          fontSize: 16.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: FaColors.whate,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                            : const SizedBox(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: FaMotion(
+                                onPressed: () {
+                                  _handleAnswer(true);
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(12.r),
+                                  decoration: BoxDecoration(
+                                    color: FaColors.blue14A0FF,
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'True',
+                                        style: TextStyle(
+                                          fontSize: 24.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: FaColors.whate,
+                                        ),
+                                      ),
+                                      SizedBox(width: 19.w),
+                                      Image.asset('assets/images/true.png',
+                                          width: 24.w)
+                                    ],
                                   ),
                                 ),
                               ),
-                              SizedBox(width: 23.w),
-                              Expanded(
-                                child: FaMotion(
-                                  onPressed: () {
-                                    _handleAnswer(false);
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.all(12.r),
-                                    decoration: BoxDecoration(
-                                      color: FaColors.blue14A0FF,
-                                      borderRadius: BorderRadius.circular(12.r),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'False',
-                                          style: TextStyle(
-                                            fontSize: 24.h,
-                                            fontWeight: FontWeight.w600,
-                                            color: FaColors.whate,
-                                          ),
+                            ),
+                            SizedBox(width: 23.w),
+                            Expanded(
+                              child: FaMotion(
+                                onPressed: () {
+                                  _handleAnswer(false);
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(12.r),
+                                  decoration: BoxDecoration(
+                                    color: FaColors.blue14A0FF,
+                                    borderRadius: BorderRadius.circular(12.r),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'False',
+                                        style: TextStyle(
+                                          fontSize: 24.h,
+                                          fontWeight: FontWeight.w600,
+                                          color: FaColors.whate,
                                         ),
-                                        SizedBox(width: 19.w),
-                                        Image.asset('assets/images/false.png',
-                                            width: 24.w)
-                                      ],
-                                    ),
+                                      ),
+                                      SizedBox(width: 19.w),
+                                      Image.asset('assets/images/false.png',
+                                          width: 24.w)
+                                    ],
                                   ),
                                 ),
                               ),
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              )
-            ],
-          ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  );
+                },
+              ),
+            )
+          ],
         ),
       ),
     );
