@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
+import 'package:footflow_academy_120/read_more/read_content.dart';
+import 'package:footflow_academy_120/read_more/read_list_page.dart';
 
 class ReadMoreScreen extends StatelessWidget {
   const ReadMoreScreen({super.key});
@@ -34,7 +36,17 @@ class ReadMoreScreen extends StatelessWidget {
             ),
             SizedBox(height: 24.h),
             FaMotion(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReadListPage(
+                      appBarTitle: 'Popular players',
+                      listModel: listPlayers,
+                    ),
+                  ),
+                );
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 64.h,
@@ -56,7 +68,17 @@ class ReadMoreScreen extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             FaMotion(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReadListPage(
+                      appBarTitle: 'Popular trainers',
+                      listModel: listTrainers,
+                    ),
+                  ),
+                );
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 64.h,
@@ -78,7 +100,17 @@ class ReadMoreScreen extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             FaMotion(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReadListPage(
+                      appBarTitle: 'Best clubs in the world',
+                      listModel: listBest,
+                    ),
+                  ),
+                );
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 64.h,
@@ -100,7 +132,17 @@ class ReadMoreScreen extends StatelessWidget {
             ),
             SizedBox(height: 16.h),
             FaMotion(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ReadListPage(
+                      appBarTitle: 'Football records',
+                      listModel: listFootball,
+                    ),
+                  ),
+                );
+              },
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 64.h,
