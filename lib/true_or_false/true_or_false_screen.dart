@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:footflow_academy_120/core/fa_colors.dart';
@@ -53,6 +54,7 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Text(
           'True or false',
           style: TextStyle(
@@ -62,15 +64,15 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
           ),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.r),
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: 16.h),
             const GlContWid(),
             SizedBox(height: 16.h),
-            SizedBox(
-              height: 550,
+            Container(
+              height: 500.h,
+              margin: EdgeInsets.symmetric(horizontal: 24.r),
               width: MediaQuery.of(context).size.width,
               child: PageView.builder(
                 physics: const NeverScrollableScrollPhysics(),

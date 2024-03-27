@@ -10,6 +10,7 @@ class TrainingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        scrolledUnderElevation: 0,
         title: Text(
           'Training',
           style: TextStyle(

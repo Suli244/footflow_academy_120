@@ -10,6 +10,7 @@ class GlContWid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 24.r),
       width: MediaQuery.of(context).size.width,
       padding: EdgeInsets.symmetric(vertical: 20.r, horizontal: 12.r),
       decoration: BoxDecoration(

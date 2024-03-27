@@ -30,6 +30,7 @@ class _WebPlinkState extends State<WebFF> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+           scrolledUnderElevation: 0,
         title: Text(
           widget.title,
           style: TextStyle(
