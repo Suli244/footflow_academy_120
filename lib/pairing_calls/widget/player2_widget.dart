@@ -56,12 +56,14 @@ class _Player2ContainerState extends State<Player2Container> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const Text('Write the name'),
+                        const SizedBox(height: 8),
                         CupertinoTextField(
                           controller: controllerText,
                           placeholder: 'Enter',
                           padding: const EdgeInsets.all(10.0),
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEEEAEA),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: const Color(0xFFEEEAEA),
                           ),
                         ),
                         const SizedBox(height: 12),
