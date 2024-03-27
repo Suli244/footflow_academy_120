@@ -8,4 +8,6 @@ abstract class FaColors {
   static const Color grey999999 = Color(0xff999999);
   static const Color green = Color(0xff19B100);
   static const Color red = Color(0xffF00000);
+  static const Color purple = Color(0xff8E00FD);
+  static const Color yellow = Color(0xffFFD600);
 }
