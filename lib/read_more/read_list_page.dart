@@ -32,9 +32,10 @@ class ReadListPage extends StatelessWidget {
       ),
       body: SafeArea(
         child: GridView.builder(
-          padding: EdgeInsets.symmetric(
-            horizontal: 24.r,
-            vertical: 16.r,
+          padding: EdgeInsets.only(
+            bottom: 20,
+            left: 24.r,
+            right: 24.r,
           ),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,

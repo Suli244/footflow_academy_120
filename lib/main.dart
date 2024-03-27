@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         title: 'FootFlow Academy',
         home: child,
         theme: ThemeData(
+          fontFamily: 'Inter',
           splashColor: Colors.transparent,
           splashFactory: NoSplash.splashFactory,
           highlightColor: Colors.transparent,
