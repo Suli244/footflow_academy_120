@@ -25,6 +25,8 @@ class _PairingDetaileState extends State<PairingDetaile> {
   bool isChekStart = false;
   late final oneSecStart = const Duration(seconds: 1);
   Timer timerStart = Timer(Duration.zero, () {});
+  String player1 = '';
+  String player2 = '';
 
   @override
   void dispose() {
@@ -36,7 +38,17 @@ class _PairingDetaileState extends State<PairingDetaile> {
   void initState() {
     pageController = PageController(initialPage: 0);
     startTimerStart();
+    getPlayers();
     super.initState();
+  }
+
+  Future<void> getPlayers() async {
+    String play1 = await getPlayer1();
+    String play2 = await getPlayer2();
+    setState(() {
+      player1 = play1;
+      player2 = play2;
+    });
   }
 
   int secondsStart = 0;
@@ -62,9 +74,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
 
   String minutesConvert(int seconds) {
     Duration clockTimer = Duration(seconds: seconds);
-    return clockTimer.inSeconds.remainder(60).toString().padLeft(
-          2,
-        );
+    return clockTimer.inSeconds.remainder(60).toString();
   }
 
   @override
@@ -76,7 +86,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
               child: Text(
                 minutesConvert(secondsStart),
                 style: TextStyle(
-                  color: FaColors.whate,
+                  color: FaColors.blue14A0FF,
                   fontWeight: FontWeight.w700,
                   fontSize: 128.h,
                 ),
@@ -92,7 +102,7 @@ class _PairingDetaileState extends State<PairingDetaile> {
                 color: Colors.white,
               ),
               title: Text(
-                changePlayer ? 'Player1' : 'Player2',
+                changePlayer ? player1 : player2,
                 style: TextStyle(
                   fontSize: 24.h,
                   fontWeight: FontWeight.w600,

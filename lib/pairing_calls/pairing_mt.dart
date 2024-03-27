@@ -1,3 +1,5 @@
+import 'package:shared_preferences/shared_preferences.dart';
+
 class PrModel {
   final String image;
   final String text;
@@ -6,6 +8,46 @@ class PrModel {
     required this.image,
     required this.text,
   });
+}
+
+Future<int> getPlayer1Color() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('Player1Color') ?? 0;
+}
+
+Future<void> setPlayer1Color(int playerColor1) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setInt('Player1Color', playerColor1);
+}
+
+Future<int> getPlayer2Color() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getInt('Player2Color') ?? 0;
+}
+
+Future<void> setPlayer2Color(int playerColor2) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setInt('Player2Color', playerColor2);
+}
+
+Future<String> getPlayer1() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString('Player1') ?? 'Player 1';
+}
+
+Future<void> setPlayer1(String player1) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setString('Player1', player1);
+}
+
+Future<String> getPlayer2() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs.getString('Player2') ?? 'Player 2';
+}
+
+Future<void> setPlayer2(String player2) async {
+  final prefs = await SharedPreferences.getInstance();
+  prefs.setString('Player2', player2);
 }
 
 List<PrModel> listPr = [
