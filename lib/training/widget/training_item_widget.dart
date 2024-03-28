@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
-import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/training/model/training_model.dart';
 
 class TrainingItemWidget extends StatelessWidget {
   const TrainingItemWidget({
     super.key,
     required this.model,
-    this.isActivPremium = false,
-    required this.onPressed,
+    required this.isActivPremium,
   });
   final TrainingModel model;
   final bool isActivPremium;
-  final Function() onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -70,25 +67,22 @@ class TrainingItemWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              FaMotion(
-                onPressed: onPressed,
-                child: Container(
-                  padding: EdgeInsets.all(10.r),
-                  margin: EdgeInsets.only(
-                    left: 10.w,
-                    right: 9.w,
-                    bottom: 15.h,
-                  ),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.r),
-                    color: FaColors.blue003870.withOpacity(0.60),
-                  ),
-                  child: Image.asset(
-                    isActivPremium
-                        ? 'assets/icons/training_icon.png'
-                        : 'assets/icons/training_icon_premium.png',
-                    width: 28.w,
-                  ),
+              Container(
+                padding: EdgeInsets.all(10.r),
+                margin: EdgeInsets.only(
+                  left: 10.w,
+                  right: 9.w,
+                  bottom: 15.h,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.r),
+                  color: FaColors.blue003870.withOpacity(0.60),
+                ),
+                child: Image.asset(
+                  isActivPremium
+                      ? 'assets/icons/training_icon_premium.png'
+                      : 'assets/icons/training_icon.png',
+                  width: 28.w,
                 ),
               ),
             ],

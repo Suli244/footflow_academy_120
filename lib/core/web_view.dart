@@ -1,28 +1,52 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class WebFF extends StatefulWidget {
+class Webjcdvsdvsd extends StatefulWidget {
   final String url;
   final String title;
 
-  const WebFF({
+  const Webjcdvsdvsd({
     super.key,
     required this.title,
     required this.url,
   });
 
   @override
-  State<WebFF> createState() => _WebPlinkState();
+  State<Webjcdvsdvsd> createState() => _WebPlinkState();
 }
 
-class _WebPlinkState extends State<WebFF> {
+class _WebPlinkState extends State<Webjcdvsdvsd> {
   late WebViewController controller;
+  bool isLoading = true;
   @override
   void initState() {
     controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
-      ..loadRequest(Uri.parse(widget.url));
+      ..loadRequest(Uri.parse(widget.url))
+      ..setNavigationDelegate(
+        NavigationDelegate(
+          onProgress: (int progress) {},
+          onPageStarted: (String url) {
+            setState(() {
+              isLoading = true;
+            });
+          },
+          onPageFinished: (String url) {
+            setState(() {
+              isLoading = false;
+            });
+          },
+          onWebResourceError: (WebResourceError error) {},
+          // onNavigationRequest: (NavigationRequest request) {
+          //   if (request.url.startsWith('https://www.youtube.com/')) {
+          //     return NavigationDecision.prevent;
+          //   }
+          //   return NavigationDecision.navigate;
+          // },
+        ),
+      );
     super.initState();
   }
 
@@ -30,28 +54,39 @@ class _WebPlinkState extends State<WebFF> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-           scrolledUnderElevation: 0,
+        elevation: 0,
+        backgroundColor: Colors.white,
         title: Text(
           widget.title,
           style: TextStyle(
-            fontSize: 19.h,
-            fontWeight: FontWeight.w500,
+            fontSize: 20.h,
             color: Colors.black,
+            fontWeight: FontWeight.w600,
           ),
         ),
+        leading: const BackButton(color: Colors.black),
       ),
-      body: SizedBox(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          children: [
-            Expanded(
-              child: WebViewWidget(
-                controller: controller,
-              ),
+      body: Stack(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+              children: [
+                Expanded(
+                  child: WebViewWidget(
+                    controller: controller,
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          isLoading
+              ? const Positioned.fill(
+                  child: CupertinoActivityIndicator(color: Colors.black),
+                )
+              : Container(),
+        ],
       ),
     );
   }

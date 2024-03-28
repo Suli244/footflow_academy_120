@@ -18,7 +18,7 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
   int currentIndex = 0;
   bool? isAnswerCorrect;
   PageController _pageController = PageController();
-
+  bool buttonChek = false;
   @override
   void initState() {
     super.initState();
@@ -34,16 +34,23 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
   void _handleAnswer(bool answer) {
     final currentModel = listTrFaModel[currentIndex];
     setState(() {
+       buttonChek = true;
       isAnswerCorrect = currentModel.correctAnswer == answer;
     });
 
     if (currentIndex < listTrFaModel.length - 1) {
       Future.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          buttonChek = false;
+        });
         _pageController.nextPage(
             duration: const Duration(milliseconds: 200), curve: Curves.easeIn);
       });
     } else {
       Future.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          buttonChek = false;
+        });
         _pageController.jumpToPage(0);
         listTrFaModel.shuffle();
       });
@@ -71,7 +78,7 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
             const GlContWid(),
             SizedBox(height: 16.h),
             Container(
-              height: 500.h,
+              height: 490.h,
               margin: EdgeInsets.symmetric(horizontal: 24.r),
               width: MediaQuery.of(context).size.width,
               child: PageView.builder(
@@ -157,7 +164,9 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
                             Expanded(
                               child: FaMotion(
                                 onPressed: () {
-                                  _handleAnswer(true);
+                                  if (buttonChek == false) {
+                                    _handleAnswer(true);
+                                  }
                                 },
                                 child: Container(
                                   padding: EdgeInsets.all(12.r),
@@ -188,7 +197,9 @@ class _TrueOrFalseScreenState extends State<TrueOrFalseScreen> {
                             Expanded(
                               child: FaMotion(
                                 onPressed: () {
-                                  _handleAnswer(false);
+                                  if (buttonChek == false) {
+                                    _handleAnswer(false);
+                                  }
                                 },
                                 child: Container(
                                   padding: EdgeInsets.all(12.r),

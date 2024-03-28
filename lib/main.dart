@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
+import 'package:footflow_academy_120/core/urls.dart';
 import 'package:footflow_academy_120/splash/splash_screen.dart';
 
-void main() {
+import 'package:apphud/apphud.dart';
+
+void main() async {
   runApp(const MyApp());
+  await Apphud.start(apiKey: DocFF.vdsrferwe);
 }
 
 class MyApp extends StatelessWidget {

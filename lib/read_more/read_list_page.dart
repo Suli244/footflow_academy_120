@@ -37,11 +37,11 @@ class ReadListPage extends StatelessWidget {
             left: 24.r,
             right: 24.r,
           ),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               mainAxisSpacing: 16,
               crossAxisSpacing: 16,
-              mainAxisExtent: 180),
+              mainAxisExtent: 180.h),
           itemBuilder: (context, index) => ReadWidget(
             model: listModel[index],
           ),

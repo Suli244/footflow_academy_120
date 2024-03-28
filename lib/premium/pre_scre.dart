@@ -131,7 +131,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                       vssqwwd = true;
                     });
                     final apphudPaywalls = await Apphud.paywalls();
-                    print(apphudPaywalls?.paywalls.first.products?.first);
+                    // print(apphudPaywalls?.paywalls.first.products?.first);
                     await Apphud.purchase(
                       product: apphudPaywalls?.paywalls.first.products?.first,
                     ).whenComplete(
@@ -182,7 +182,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const WebFF(
+                        builder: (context) => const Webjcdvsdvsd(
                           title: 'Terms of Service',
                           url: DocFF.tUse,
                         ),
@@ -194,7 +194,7 @@ class _PremiumScreenState extends State<PremiumScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const WebFF(
+                        builder: (context) => const Webjcdvsdvsd(
                           title: 'Privacy Policy',
                           url: DocFF.pP,
                         ),

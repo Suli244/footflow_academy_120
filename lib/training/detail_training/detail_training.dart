@@ -45,7 +45,7 @@ class DetailTraining extends StatelessWidget {
             padding: EdgeInsets.only(right: 20.w),
             child: FaMotion(
               onPressed: () {
-                Share.share(modelDetail.name);
+                Share.share(modelDetail.url);
               },
               child: Image.asset(
                 'assets/icons/share_icon.png',

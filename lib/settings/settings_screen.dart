@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/urls.dart';
 import 'package:footflow_academy_120/core/web_view.dart';
 import 'package:footflow_academy_120/premium/pre_scre.dart';
+import 'package:footflow_academy_120/settings/footflow_academy_predm.dart';
 import 'package:footflow_academy_120/settings/widget/settings_item_widget.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -26,27 +27,34 @@ class SettingsScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 24.w),
         child: Column(
           children: [
-            SetItWid(
-              text: 'Buy Premium for \$0,99',
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const PremiumScreen(
-                      isClose: true,
-                    ),
-                  ),
-                );
-              },
-              isActivPremium: true,
-            ),
+            FutureBuilder(
+                future: getFootflowAcademyPrenmdvdsdsd(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData && !snapshot.data!) {
+                    return SetItWid(
+                      text: 'Buy Premium for \$0,99',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PremiumScreen(
+                              isClose: true,
+                            ),
+                          ),
+                        );
+                      },
+                      isActivPremium: true,
+                    );
+                  }
+                  return const SizedBox();
+                }),
             SetItWid(
               text: 'Terms of Use',
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WebFF(
+                    builder: (context) => const Webjcdvsdvsd(
                       title: 'Terms of Use',
                       url: DocFF.tUse,
                     ),
@@ -60,7 +68,7 @@ class SettingsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WebFF(
+                    builder: (context) => const Webjcdvsdvsd(
                       title: 'Privacy Policy',
                       url: DocFF.pP,
                     ),
@@ -71,7 +79,8 @@ class SettingsScreen extends StatelessWidget {
             SetItWid(
               text: 'Share App',
               onPressed: () {
-                Share.share('Hello');
+                Share.share(
+                    'https://apps.apple.com/us/app/footflow-academy/id6480127914');
               },
             ),
             SetItWid(
@@ -80,7 +89,7 @@ class SettingsScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const WebFF(
+                    builder: (context) => const Webjcdvsdvsd(
                       title: 'Support',
                       url: DocFF.s,
                     ),
