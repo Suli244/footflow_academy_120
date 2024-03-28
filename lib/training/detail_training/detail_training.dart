@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:footflow_academy_120/training/widget/youtube_player_widget_dateil.dart';
+import 'package:footflow_academy_120/training/widget/jnsknfjwnwknq.dart';
 import 'package:share_plus/share_plus.dart';
 
 import 'package:footflow_academy_120/core/fa_motin.dart';
@@ -12,7 +12,7 @@ class DetailTraining extends StatelessWidget {
     super.key,
     required this.modelDetail,
   });
-  final TrainingModel modelDetail;
+  final TrainingModelIyugbcajsca modelDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class DetailTraining extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
                 ),
-                child: YoutubePlayeR(
+                child: PoqwyhcvsdYouri(
                   url: modelDetail.url,
                 ),
               ),

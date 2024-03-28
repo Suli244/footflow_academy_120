@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
 
-class SetItWid extends StatelessWidget {
-  const SetItWid({
+class SetItWidughbdjncsdv extends StatelessWidget {
+  const SetItWidughbdjncsdv({
     super.key,
     required this.text,
     required this.onPressed,

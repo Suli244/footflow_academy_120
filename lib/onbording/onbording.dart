@@ -9,7 +9,7 @@ import 'package:footflow_academy_120/premium/pre_scre.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
-import 'package:footflow_academy_120/onbording/widget/rest_wid.dart';
+import 'package:footflow_academy_120/onbording/widget/rest_wid_cqygdqjnqwqwgg.dart';
 
 class FaOnbording extends StatefulWidget {
   const FaOnbording({super.key});

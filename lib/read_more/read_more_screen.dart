@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/premium/pre_scre.dart';
-import 'package:footflow_academy_120/read_more/read_content.dart';
+import 'package:footflow_academy_120/read_more/read_content_fkjnwqqw.dart';
 import 'package:footflow_academy_120/read_more/read_list_page.dart';
 import 'package:footflow_academy_120/settings/footflow_academy_predm.dart';
 

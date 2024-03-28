@@ -9,7 +9,7 @@ class TrainingItemWidget extends StatelessWidget {
     required this.model,
     required this.isActivPremium,
   });
-  final TrainingModel model;
+  final TrainingModelIyugbcajsca model;
   final bool isActivPremium;
 
   @override

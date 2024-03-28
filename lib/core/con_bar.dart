@@ -6,7 +6,7 @@ import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/pairing_calls/pairing_calls_screen.dart';
 import 'package:footflow_academy_120/read_more/read_more_screen.dart';
 import 'package:footflow_academy_120/settings/settings_screen.dart';
-import 'package:footflow_academy_120/training/training_screen.dart';
+import 'package:footflow_academy_120/training/training_oijefewifwefwe.dart';
 import 'package:footflow_academy_120/true_or_false/true_or_false_screen.dart';
 
 class FaBottomBarState extends State<FaBottomBar> {

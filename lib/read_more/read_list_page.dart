@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:footflow_academy_120/core/fa_colors.dart';
-import 'package:footflow_academy_120/read_more/read_content.dart';
+import 'package:footflow_academy_120/read_more/read_content_fkjnwqqw.dart';
 import 'package:footflow_academy_120/read_more/read_detaile.dart';
 import 'package:shimmer/shimmer.dart';
 

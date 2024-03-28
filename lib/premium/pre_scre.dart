@@ -7,7 +7,7 @@ import 'package:footflow_academy_120/core/fa_colors.dart';
 import 'package:footflow_academy_120/core/fa_motin.dart';
 import 'package:footflow_academy_120/core/urls.dart';
 import 'package:footflow_academy_120/core/web_view.dart';
-import 'package:footflow_academy_120/onbording/widget/rest_wid.dart';
+import 'package:footflow_academy_120/onbording/widget/rest_wid_cqygdqjnqwqwgg.dart';
 import 'package:footflow_academy_120/settings/footflow_academy_predm.dart';
 
 class PremiumScreen extends StatefulWidget {

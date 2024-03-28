@@ -3,18 +3,18 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class YoutubePlayeR extends StatefulWidget {
-  const YoutubePlayeR({
+class PoqwyhcvsdYouri extends StatefulWidget {
+  const PoqwyhcvsdYouri({
     super.key,
     required this.url,
   });
   final String url;
 
   @override
-  State<YoutubePlayeR> createState() => _YoutubePlayeRState();
+  State<PoqwyhcvsdYouri> createState() => _PoqwyhcvsdYouriState();
 }
 
-class _YoutubePlayeRState extends State<YoutubePlayeR> {
+class _PoqwyhcvsdYouriState extends State<PoqwyhcvsdYouri> {
   late YoutubePlayerController controller;
 
   @override

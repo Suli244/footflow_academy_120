@@ -4,7 +4,7 @@ import 'package:footflow_academy_120/core/urls.dart';
 import 'package:footflow_academy_120/core/web_view.dart';
 import 'package:footflow_academy_120/premium/pre_scre.dart';
 import 'package:footflow_academy_120/settings/footflow_academy_predm.dart';
-import 'package:footflow_academy_120/settings/widget/settings_item_widget.dart';
+import 'package:footflow_academy_120/settings/widget/settings_item_poqjwcmas.dart';
 import 'package:share_plus/share_plus.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -31,7 +31,7 @@ class SettingsScreen extends StatelessWidget {
                 future: getFootflowAcademyPrenmdvdsdsd(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData && !snapshot.data!) {
-                    return SetItWid(
+                    return SetItWidughbdjncsdv(
                       text: 'Buy Premium for \$0,99',
                       onPressed: () {
                         Navigator.push(
@@ -48,7 +48,7 @@ class SettingsScreen extends StatelessWidget {
                   }
                   return const SizedBox();
                 }),
-            SetItWid(
+            SetItWidughbdjncsdv(
               text: 'Terms of Use',
               onPressed: () {
                 Navigator.push(
@@ -62,7 +62,7 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
-            SetItWid(
+            SetItWidughbdjncsdv(
               text: 'Pricacy Policy',
               onPressed: () {
                 Navigator.push(
@@ -76,14 +76,14 @@ class SettingsScreen extends StatelessWidget {
                 );
               },
             ),
-            SetItWid(
+            SetItWidughbdjncsdv(
               text: 'Share App',
               onPressed: () {
                 Share.share(
                     'https://apps.apple.com/us/app/footflow-academy/id6480127914');
               },
             ),
-            SetItWid(
+            SetItWidughbdjncsdv(
               text: 'Support',
               onPressed: () {
                 Navigator.push(
