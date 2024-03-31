@@ -5,8 +5,12 @@ import 'package:footflow_academy_120/core/urls.dart';
 import 'package:footflow_academy_120/splash/splash_screen.dart';
 
 import 'package:apphud/apphud.dart';
+import 'package:onesignal_flutter/onesignal_flutter.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  OneSignal.initialize('89b3b667-5e17-41a5-8a6e-2a9560c53322');
+  await OneSignal.Notifications.requestPermission(true);
   runApp(const MyApp());
   await Apphud.start(apiKey: DocFF.vdsrferwe);
 }
